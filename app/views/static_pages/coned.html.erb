@@ -1,0 +1,35 @@
+<html>
+  <body>
+    
+    <br/>Enter Previous Months Reading:
+    <input type="text" id="txt1" name="text1">Enter Current Reading:
+    <input type="text" id="txt2" name="text2">
+    <p id="supply"></p>
+    <p id="delivery"></p>
+    <p id="tax"></p>
+    <p id="total"></p>
+    <p>Click the button to calculate bill estimate.</p>
+    <button onclick="myFunction()">Try it</button>
+    <br/>
+    <script>
+      function myFunction() {
+        var y = parseInt(document.getElementById("txt1").value) * 10;
+        var z = parseInt(document.getElementById("txt2").value)* 10;
+        var x = y - z;
+        var supply = parseFloat((x) * .095531 + 1.95 +1.17).toFixed(2);
+        var delivery = parseFloat((x) * (.110653+.007) + 19.06 +1.26 +3.97).toFixed(2);
+        var tax = (parseFloat(supply) + parseFloat(delivery)) *.045;
+        var total = parseFloat(supply) + parseFloat(delivery) + parseFloat(tax);
+
+
+        document.getElementById("supply").innerHTML = "Supply Charges: $" + supply;
+        document.getElementById("delivery").innerHTML = "Delivery Charges: $" + delivery;
+        document.getElementById("tax").innerHTML = "Tax : $" + tax.toFixed(2);
+        document.getElementById("total").innerHTML = "Estimated Total Charges: $" + total.toFixed(2);
+      }
+    </script>
+    <p>This is in no way associated with Con Ed</p>
+    <p>For entertainment purposes only</p>
+    <a href="/">Home</a>
+  </body>
+</html>
